@@ -1,9 +1,14 @@
 import express from 'express'
 const router = express.Router()
 import { postCervejas, getCervejas, getCervejasId, putAlterarCervejas, deleteCervejas} from '../controller/cervejaria.js'
+import {login, validacao, cadastrarUsuario} from '../controller/autenticacao.js'
+
+//login
+router.post('/login', login)
+router.post('/cadastrar', cadastrarUsuario)
 
 // Listagem de informações
-router.get('/cervejas', getCervejas)
+router.get('/cervejas', validacao, getCervejas)
 router.get('/cervejas/:id', getCervejasId)
 
 
